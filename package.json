@@ -1,0 +1,15 @@
+{
+  "name": "node-speech",
+  "version": "0.0.1",
+  "description": "Speech SythesidSynthesis for node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "speech",
+    "text-to-voice"
+  ],
+  "author": "Manu Overa",
+  "license": "MIT"
+}
