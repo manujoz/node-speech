@@ -32,7 +32,7 @@ class NodeSpeech extends events
 	 */
 	speak( element ) 
 	{
-		if( !this._isConstructed || !this._worker ) {
+		if( !this._isConstructed ) {
 			console.error( "[node-speech]: Addon is not instantiated" );
 			return;
 		}
@@ -40,6 +40,21 @@ class NodeSpeech extends events
 		if( typeof element != "string" ) {
 			console.error( "[node-speech]: You only can pass a string to the synthesized." );
 			return;
+		}
+
+		if( !this._worker ) {
+			this._worker = new Worker( path.resolve( __dirname , "worker.js" ) );
+			this._worker.on( "message", response => {
+				this._get_result( response.evName, response.result );
+			});
+
+			this._worker.on( "error", error => {
+				console.error( "[node-speech]: ", error )
+			});
+
+			this._worker.on( "exit", () => {
+				
+			});
 		}
 
 		this._worker.postMessage({
@@ -111,6 +126,20 @@ class NodeSpeech extends events
 	}
 
 	/**
+	 * @method	stop
+	 * 
+	 * End trhead of synthesized
+	 * 
+	 * @returns	{void}
+	 */
+	stop() {
+		if( this._worker ) {
+			this._worker.terminate();
+			this._worker = null;
+		}
+	}
+
+	/**
 	 * @method	_init
 	 * 
 	 * Initialize the addon
@@ -125,22 +154,6 @@ class NodeSpeech extends events
 			console.error( "[node-speech]: Addon is not instantiated" );
 			return;
 		}
-
-		// Init thread
-		
-		this._worker = new Worker( path.resolve( __dirname , "worker.js" ) );
-		this._worker.on( "message", response => {
-			this._get_result( response.evName, response.result );
-		});
-
-		this._worker.on( "error", error => {
-			console.error( "[node-speech]: ", error )
-		});
-
-		this._worker.on( "exit", () => {
-			
-		});
-
 	}
 
 	/**
