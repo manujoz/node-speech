@@ -192,6 +192,8 @@ namespace CsNodeSpeech
          */
         private void GetVoices(string culture)
         {
+            Voices = new List<Voice>();
+
             foreach (InstalledVoice v in Synth.GetInstalledVoices())
             {
                 VoiceInfo info = v.VoiceInfo;
