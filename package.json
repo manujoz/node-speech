@@ -1,6 +1,6 @@
 {
   "name": "node-speech",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Speech Synthesized for node js",
   "main": "app.js",
   "scripts": {
