@@ -1,5 +1,5 @@
 #include "utils.h"
-
+using namespace System::Runtime::InteropServices;
 namespace Utils
 {
     /*
@@ -47,7 +47,7 @@ namespace Utils
 
         char str[512];
         size_t result;
-        status = napi_get_value_string_utf8(env, arg, str, 512, &result);
+        status = napi_get_value_string_latin1(env, arg, str, 512, &result);
         assert(status == napi_ok);
 
         string s(str);

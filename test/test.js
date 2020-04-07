@@ -3,8 +3,7 @@ const Speech = NodeSpeech;
 
 const Speaker = new Speech( "es-ES" );
 
-Speaker.speak( "Hola, esto es una prueba" );
-Speaker.speak( "Mi mujer es la mas guapa del mundo" );
+Speaker.speak( "El médico medicó una receta" );
 
 let i = 1;
 while( i < 10 ) {
