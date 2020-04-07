@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,7 +66,7 @@ namespace CsNodeSpeech
         /**
          * @method  SpeakFromString
          * 
-         * Speak a text given in a string
+         * Speak a text given in a string Camión
          * 
          * @params  {string}    text        Text to speak
          * @returns {void}
